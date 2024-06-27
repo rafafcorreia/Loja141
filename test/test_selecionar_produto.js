@@ -5,10 +5,9 @@ const assert = require('assert')
 describe('Selecionar Produto', function() {
   this.timeout(30000)
   let driver
-  let vars
+  
   beforeEach(async function() {
     driver = await new Builder().forBrowser('chrome').build()
-    vars = {}
     await driver.manage().setTimeouts({implicit: 10000})
   })
   afterEach(async function() {
@@ -16,7 +15,7 @@ describe('Selecionar Produto', function() {
   })
   it('Selecionar Produto', async function() {
     await driver.get("https://www.saucedemo.com/")
-    await driver.manage().window().setRect({ width: 1267, height: 816 })
+    await driver.manage().window().maximize()
     await driver.findElement(By.css("*[data-test=\"username\"]")).sendKeys("standard_user")
     await driver.findElement(By.css("*[data-test=\"password\"]")).sendKeys("secret_sauce")
     await driver.findElement(By.css("*[data-test=\"login-button\"]")).click()
